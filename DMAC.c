@@ -1,4 +1,6 @@
 
+
+
 /*
 
 Units:
@@ -45,7 +47,7 @@ int main(int argc, char *argv[]) {
         //the array of strings will be created, where strList is an array of pointers to pointers to chars. If memory allocation fails meaning strList is returned with NULL, then will print error message and terminate the program with 1;
         char **strList = calloc(numOfInputs, sizeof(char*));
         if(strList == NULL) {
-            printf("Memory allocation failed for strList");
+            printf("Memory allocation failed for strList\n");
             return 1;
         }
 
@@ -53,7 +55,7 @@ int main(int argc, char *argv[]) {
             strList[i] = calloc(bufferSize, sizeof(char));
             //If memory allocation fails meaning strList[i] is returned with NULL, then will print error message and terminate the program with 1;
             if(strList[i] == NULL) {
-                printf("Memory allocation failed for an element of strList");
+                printf("Memory allocation failed for an element of strList\n");
                 return 1;
             }
         }
@@ -62,7 +64,7 @@ int main(int argc, char *argv[]) {
         char *userInput = calloc(bufferSize, sizeof(char));
         //If memory allocation fails meaning userInput is returned with NULL, then will print error message and terminate the program with 1;
         if(userInput == NULL) {
-            printf("Memory allocation failed for user input");
+            printf("Memory allocation failed for user input\n");
             return 1;
         }
         printf("Enter %d lines (each ending with a positive number): \n", numOfInputs);
@@ -78,7 +80,7 @@ int main(int argc, char *argv[]) {
             }
             else {
                 //if string is not legal, then will output error and clean up the pointers, free the memory that was allocated for the rest of the program because no longer useful, then the program will terminate
-                printf("\nError: No number with a space before, found at the end in the input string '%s'", userInput);
+                printf("\nError: No number with a space before, at the end of the input string '%s'\n", userInput);
                 free(userInput);
                 userInput = NULL; 
 
@@ -101,6 +103,7 @@ int main(int argc, char *argv[]) {
 
         //if no output file was inputted, will print the sorted array in stdout
         if(argc == 3) {
+            printf("\n\nSorted output based on their ranking in non-descending order:");
             printArray(strList, numOfInputs);
         }
         else {
@@ -125,7 +128,7 @@ int main(int argc, char *argv[]) {
     else {
         //if buffer size was not valid, will print out error and terminate
         if(isNum(argv[2]) && !(strtoul(argv[2], NULL, 0) >= MIN_BUFFER_SIZE)) {
-            printf("Invalid input! Buffer size must be at least %d which corresponds to one char", MIN_BUFFER_SIZE);
+            printf("Invalid input! Buffer size must be at least %d which corresponds to one char\n", MIN_BUFFER_SIZE);
         }
         else 
             //if input was invalid will print out error and terminate
@@ -211,7 +214,7 @@ char* substr(char* str, int startIndex, int endIndex) {
     char *result = calloc(endIndex-startIndex+1, sizeof(char));
     //If memory allocation fails meaning calloc is returned with NULL, then will print error message and terminate the program;
     if(result == NULL) {
-        printf("Memory allocation failed for substr method");
+        printf("Memory allocation failed for substr method\n");
         exit(EXIT_FAILURE);
     }
 
