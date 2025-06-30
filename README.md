@@ -1,0 +1,1 @@
+This program is about using pointers to dynamically allocated memory for user inputs with constraints on inputs provided by the user, sorting the inputs, and outputting the result into the user’s desired file.
